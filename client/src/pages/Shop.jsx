@@ -1,8 +1,13 @@
-import React from "react"
+import { React, us } from "react"
 import styled from "styled-components"
+import { useProductContext } from "../context/product_context"
 import { Header, Shops, Goods } from "../components/index"
 
 const Shop = () => {
+  const { fetchProducts, currentShop, products, products_loading } =
+    useProductContext()
+
+  console.log(currentShop)
   return (
     <Wrapper>
       <Header />

@@ -1,7 +1,15 @@
 import React from "react"
 import styled from "styled-components"
+import { useProductContext } from "../context/product_context"
 
-const Product = ({ image, caption, inCart }) => {
+const clickHandler = (addInCart, id) => {
+  return (e) => {
+    addInCart(id)
+  }
+}
+
+const Product = ({ image, caption, inCart, id }) => {
+  const { addInCart } = useProductContext()
   return (
     <Wrapper>
       <div
@@ -11,12 +19,15 @@ const Product = ({ image, caption, inCart }) => {
             : "delivery-app__product-container-inCart"
         }
       >
-        <img src={image} alt="" />
+        <img src={`src/assets/${image}`} alt="" />
 
         {inCart !== null ? (
           <>
             <p className="delivery-app__product-caption">{caption}</p>
-            <button className="delivery-app__product-button">
+            <button
+              className="delivery-app__product-button"
+              onClick={clickHandler(addInCart, id)}
+            >
               add to Cart
             </button>
           </>
@@ -46,7 +57,7 @@ const Wrapper = styled.section`
   .delivery-app__product-container-inCart {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 2rem;
     background-color: #18181a;
     /* border: 2px solid black; */
     border-radius: 10px;
@@ -72,10 +83,14 @@ const Wrapper = styled.section`
     border-radius: 10px;
     display: flex;
     flex: 1;
+    width: 300px;
+    max-height: 200px;
   }
 
-  .delivery-app__product-container-inCart > img {
+  .delivery-app__product-container,
+  .delivery-app__product-container-inCart {
     max-width: 300px;
+    max-height: 300px;
   }
 
   .delivery-app__product-button {

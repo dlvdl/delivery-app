@@ -16,6 +16,10 @@ const ProductScema = new mongoose.Schema({
     required: [true, "Please provide the name of the company"],
     maxLength: [50, "Price cannot be longer than 50 characters"],
   },
+  image: {
+    type: String,
+    required: [true, "Please provide the image"],
+  },
 })
 
 module.exports = mongoose.model("Product", ProductScema)

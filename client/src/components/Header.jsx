@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const Header = () => {
   return (
@@ -8,10 +9,10 @@ const Header = () => {
         <nav className="delivery-app__header-navbar">
           <ul role="list" className="delivery-app__navlist">
             <li className="delivery-app__header-navbar-link">
-              <a href="/">Shop</a>
+              <Link to="/">Shop</Link>
             </li>
             <li className="delivery-app__header-navbar-link">
-              <a href="/cart">Shopping cart</a>
+              <Link to="/cart">Shopping cart</Link>
             </li>
           </ul>
         </nav>

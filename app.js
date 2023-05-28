@@ -2,7 +2,7 @@ require("dotenv").config()
 require("colors")
 const express = require("express")
 const products = require("./routes/products")
-// const orders = require("./routes/orders")
+const orders = require("./routes/orders")
 const errorHandlerMiddleware = require("./middleware/errorHandler")
 const notFoundMiddleware = require("./middleware/notFound")
 const connectDB = require("./db/connect")
@@ -13,7 +13,7 @@ app.use(express.json())
 
 // routes
 app.use("/api/v1/products", products)
-// app.use("/api/v1/orders", orders)
+app.use("/api/v1/orders", orders)
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)

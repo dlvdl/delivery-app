@@ -1,9 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import { Header, Product } from "../components/index"
-import { bigMac, kfcBucket } from "./import"
+import { useProductContext } from "../context/product_context"
+import { countBy } from "../helpers/countBy"
 
 const Cart = () => {
+  const { cart } = useProductContext()
+  const countedOrder = countBy(cart, (item) => item._id)
   return (
     <Wrapper>
       <Header />
@@ -30,11 +33,21 @@ const Cart = () => {
         </div>
 
         <div className="delivery-app__cart-content">
-          <Product image={bigMac} caption={"Big Big Burger"} inCart={null} />
-          <Product image={bigMac} caption={"Big Big Burger"} inCart={null} />
-          <Product image={bigMac} caption={"Big Big Burger"} inCart={null} />
-          <Product image={bigMac} caption={"Big Big Burger"} inCart={null} />
-          <Product image={bigMac} caption={"Big Big Burger"} inCart={null} />
+          {cart.length > 0 ? (
+            cart.map((product) => {
+              return (
+                <Product
+                  key={product._id}
+                  caption={product.name}
+                  image={product.image}
+                  id={product._id}
+                  inCart={null}
+                />
+              )
+            })
+          ) : (
+            <h1>Cart is empty</h1>
+          )}
         </div>
       </div>
       <div className="delivery-app__submit-button-container">
@@ -86,8 +99,12 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-height: 400px;
+    max-height: 500px;
     padding: 0 5rem;
+  }
+
+  .delivery-app__cart-content > h1 {
+    text-align: center;
   }
 
   .delivery-app__cart-content > div {

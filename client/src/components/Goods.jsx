@@ -1,22 +1,34 @@
-import React from "react"
+import { React, useEffect } from "react"
 import styled from "styled-components"
 import { Product } from "./index.js"
 import { bigMac, kfcBucket } from "./import.js"
+import { useProductContext } from "../context/product_context"
 
 const Goods = () => {
+  const { fetchProducts, currentShop, products, products_loading } =
+    useProductContext()
+
+  useEffect(() => {
+    fetchProducts(`/api/v1/products/?company=${currentShop}`)
+  }, [currentShop])
+
   return (
     <Wrapper>
       <div className="delivery-app__gods-container">
-        <Product caption="Big Big Burger" image={bigMac} />
-        <Product caption="Big Big Burger" image={bigMac} />
-        <Product caption="Big Big Burger" image={bigMac} />
-        <Product caption="Big Big Burger" image={bigMac} />
-        <Product caption="Big Big Burger" image={bigMac} />
-        <Product caption="Big Big Burger" image={bigMac} />
-        <Product caption="Big Big Burger" image={bigMac} />
-        <Product caption="Big Big Burger" image={bigMac} />
-        <Product caption="Big Big Burger" image={bigMac} />
-        <Product caption="Big Big Burger" image={bigMac} />
+        {products !== undefined ? (
+          products.map((product) => {
+            return (
+              <Product
+                key={product._id}
+                caption={product.name}
+                image={product.image}
+                id={product._id}
+              />
+            )
+          })
+        ) : (
+          <h1>No products!</h1>
+        )}
       </div>
     </Wrapper>
   )

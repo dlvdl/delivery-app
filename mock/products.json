@@ -1,0 +1,64 @@
+{
+  "products": [
+    {
+      "name": "Big Mac",
+      "price": 180,
+      "company": "McDonald's",
+      "image": "big-mac.jpg"
+    },
+    {
+      "name": "Chicken McNuggets",
+      "price": 150,
+      "company": "McDonald's",
+      "image": "mcnugets.jpg"
+    },
+    {
+      "name": "Filet-O-Fish",
+      "price": 140,
+      "company": "McDonald's",
+      "image": "filefish.jpg"
+    },
+    {
+      "name": "Quarter Pounder with Cheese",
+      "price": 190,
+      "company": "McDonald's",
+      "image": "quter.jpg"
+    },
+    {
+      "name": "McChicken",
+      "price": 130,
+      "company": "McDonald's",
+      "image": "mcchicken.jpg"
+    },
+    {
+      "name": "Original Recipe Chicken",
+      "price": 200,
+      "company": "KFC",
+      "image": "kentucky.jpg"
+    },
+    {
+      "name": "Zinger Burger",
+      "price": 180,
+      "company": "KFC",
+      "image": "zinger.jpg"
+    },
+    {
+      "name": "Popcorn Chicken",
+      "price": 150,
+      "company": "KFC",
+      "image": "zinger.jpg"
+    },
+    {
+      "name": "Twister Wrap",
+      "price": 160,
+      "company": "KFC",
+      "image": "kfc_twister_wrap.jpg"
+    },
+    {
+      "name": "Colonel's Crispy Strips",
+      "price": 170,
+      "company": "KFC",
+      "image": "popcorn-chicken.jpg"
+    }
+  ]
+}

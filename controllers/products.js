@@ -6,7 +6,7 @@ const getProducts = asyncWrapper(async (req, res, next) => {
   const { company } = req.query
   if (company) querryObj.company = company
   let products = await Product.find(querryObj)
-  res.status(200).json({ products })
+  res.status(200).json({ products, length: products.length })
 })
 
 const createProduct = asyncWrapper(async (req, res, next) => {
