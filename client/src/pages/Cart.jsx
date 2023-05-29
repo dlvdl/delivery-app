@@ -1,9 +1,25 @@
-import React from "react"
+import { React, useState } from "react"
 import styled from "styled-components"
 import { Header, Product } from "../components/index"
 import { useProductContext } from "../context/product_context"
 
+const submitHandler = (e) => {
+  e.preventDefault()
+}
+
+const onChangeHandler = (prevVal, action) => {
+  return (e) => {
+    action({ ...prevVal, [e.target.name]: e.target.value })
+  }
+}
+
 const Cart = () => {
+  const [inputsValue, setInputsValue] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    address: "",
+  })
   const { cart, orderSum } = useProductContext()
 
   return (
@@ -11,22 +27,46 @@ const Cart = () => {
       <Header />
       <div className="delivery-app__cart-container">
         <div className="delivery-app__cart-form">
-          <form>
+          <form name="form" onSubmit={submitHandler}>
             <div>
-              <input type="text" name="name" />
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={inputsValue.name}
+                onChange={onChangeHandler(inputsValue, setInputsValue)}
+              />
               <label htmlFor="name">Name</label>
             </div>
             <div>
-              <input type="email" name="email" />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                onChange={onChangeHandler(inputsValue, setInputsValue)}
+                value={inputsValue.email}
+              />
               <label htmlFor="email">Email</label>
             </div>
             <div>
-              <input type="phone" name="phone" />
+              <input
+                type="phone"
+                name="phone"
+                id="phone"
+                value={inputsValue.phone}
+                onChange={onChangeHandler(inputsValue, setInputsValue)}
+              />
               <label htmlFor="phone">Phone</label>
             </div>
             <div>
-              <input type="text" name="adress" />
-              <label htmlFor="adress">Adress</label>
+              <input
+                type="text"
+                name="address"
+                id="address"
+                value={inputsValue.address}
+                onChange={onChangeHandler(inputsValue, setInputsValue)}
+              />
+              <label htmlFor="address">Adress</label>
             </div>
           </form>
         </div>

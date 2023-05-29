@@ -25,6 +25,10 @@ const OrderSchema = new mongoose.Schema({
     required: [true, "Please provide the total price"],
     maxLength: [50, "Total price cannot be longer than 50 characters"],
   },
+  order: {
+    type: Object,
+    required: [true, "Please provide order"],
+  },
 })
 
 module.exports = mongoose.model("Order", OrderSchema)
