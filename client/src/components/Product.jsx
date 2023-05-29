@@ -1,15 +1,22 @@
-import React from "react"
+import { React } from "react"
 import styled from "styled-components"
 import { useProductContext } from "../context/product_context"
 
-const clickHandler = (addInCart, id) => {
-  return (e) => {
-    addInCart(id)
-  }
-}
+const Product = ({ image, caption, inCart, id, count }) => {
+  const { addInCart, setInCart, calculateOrderSum, removeFromCart } =
+    useProductContext()
 
-const Product = ({ image, caption, inCart, id }) => {
-  const { addInCart } = useProductContext()
+  const clickHandler = (e) => {
+    addInCart(id, 1)
+    calculateOrderSum()
+  }
+
+  const changeInputHandler = (e) => {
+    if (+e.target.value < 0) return
+    setInCart(id, e.target.value)
+    calculateOrderSum()
+  }
+
   return (
     <Wrapper>
       <div
@@ -26,7 +33,7 @@ const Product = ({ image, caption, inCart, id }) => {
             <p className="delivery-app__product-caption">{caption}</p>
             <button
               className="delivery-app__product-button"
-              onClick={clickHandler(addInCart, id)}
+              onClick={clickHandler}
             >
               add to Cart
             </button>
@@ -34,8 +41,15 @@ const Product = ({ image, caption, inCart, id }) => {
         ) : (
           <div className="delivery-app__product-container-inCart-content">
             <p className="delivery-app__product-caption">{caption}</p>
-            <input type="number" />
-            <button className="delivery-app__product-button">Remove</button>
+            <input type="number" value={count} onChange={changeInputHandler} />
+            <button
+              className="delivery-app__product-button"
+              onClick={(e) => {
+                removeFromCart(id)
+              }}
+            >
+              Remove
+            </button>
           </div>
         )}
       </div>

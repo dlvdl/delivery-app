@@ -1,5 +1,4 @@
-import { createContext, useEffect, useContext, useReducer } from "react"
-import { countBy } from "../helpers/countBy"
+import { createContext, useContext, useReducer } from "react"
 
 import axios from "axios"
 import {
@@ -9,6 +8,9 @@ import {
   CHANGE_SHOP,
   ADD_IN_CART,
   CLEAR_CART,
+  SET_IN_CART,
+  CALCULATE_ORDER_SUM,
+  REMOVE_FROM_CART,
 } from "../actions"
 
 import reducer from "../reducers/product_reducer"
@@ -19,6 +21,7 @@ const initialState = {
   products: [],
   currentShop: "McDonald's",
   cart: [],
+  orderSum: 0,
 }
 
 const ProductsContext = createContext()
@@ -43,17 +46,40 @@ export const ProductProvider = ({ children }) => {
     dispatch({ type: CHANGE_SHOP, payload: name })
   }
 
-  const addInCart = (id) => {
-    dispatch({ type: ADD_IN_CART, payload: id })
+  const addInCart = (id, count) => {
+    dispatch({ type: ADD_IN_CART, payload: { id } })
   }
 
   const clearCart = () => {
     dispatch({ type: CLEAR_CART })
+    calculateOrderSum()
+  }
+
+  const setInCart = (id, count) => {
+    dispatch({ type: SET_IN_CART, payload: { id, count } })
+  }
+
+  const calculateOrderSum = () => {
+    dispatch({ type: CALCULATE_ORDER_SUM })
+  }
+
+  const removeFromCart = (id) => {
+    dispatch({ type: REMOVE_FROM_CART, payload: { id } })
+    calculateOrderSum()
   }
 
   return (
     <ProductsContext.Provider
-      value={{ ...state, fetchProducts, changeShop, addInCart, clearCart }}
+      value={{
+        ...state,
+        fetchProducts,
+        changeShop,
+        addInCart,
+        clearCart,
+        setInCart,
+        calculateOrderSum,
+        removeFromCart,
+      }}
     >
       {children}
     </ProductsContext.Provider>

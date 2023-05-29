@@ -2,11 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import { Header, Product } from "../components/index"
 import { useProductContext } from "../context/product_context"
-import { countBy } from "../helpers/countBy"
 
 const Cart = () => {
-  const { cart } = useProductContext()
-  const countedOrder = countBy(cart, (item) => item._id)
+  const { cart, orderSum } = useProductContext()
+
   return (
     <Wrapper>
       <Header />
@@ -42,6 +41,7 @@ const Cart = () => {
                   image={product.image}
                   id={product._id}
                   inCart={null}
+                  count={product.count}
                 />
               )
             })
@@ -52,7 +52,7 @@ const Cart = () => {
       </div>
       <div className="delivery-app__submit-button-container">
         <p>
-          Total price: <span>999</span>
+          Total price: <span>{orderSum}</span>
         </p>
         <button>Submit</button>
       </div>
