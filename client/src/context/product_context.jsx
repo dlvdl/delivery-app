@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react"
+import { createContext, useContext, useReducer, useEffect } from "react"
 
 import axios from "axios"
 import {
@@ -15,19 +15,17 @@ import {
 
 import reducer from "../reducers/product_reducer"
 
-const initialState = {
-  products_loading: false,
-  products_error: false,
-  products: [],
-  currentShop: "McDonald's",
-  cart: [],
-  orderSum: 0,
-}
-
 const ProductsContext = createContext()
 
 export const ProductProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(
+    reducer,
+    JSON.parse(localStorage.getItem("initialState"))
+  )
+
+  useEffect(() => {
+    localStorage.setItem("initialState", JSON.stringify(state))
+  }, [state])
 
   const fetchProducts = async (url) => {
     dispatch({ type: GET_PRODUCTS_BEGIN })
