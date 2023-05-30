@@ -9,8 +9,7 @@ const Goods = () => {
     useProductContext()
 
   useEffect(() => {
-    console.log(import.meta.env.VITE_APP_SHOP_URL)
-    fetchProducts(`${import.meta.env.VITE_APP_SHOP_URL}?company=${currentShop}`)
+    fetchProducts(`api/v1/products/?company=${currentShop}`)
   }, [currentShop])
 
   return (
