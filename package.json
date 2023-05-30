@@ -4,6 +4,7 @@
   "description": "test-task",
   "main": "app.js",
   "scripts": {
+    "build": "cd client && vite build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon app.js",
     "client": "cd client && npm run dev",

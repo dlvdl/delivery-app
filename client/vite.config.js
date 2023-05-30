@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api/v1": {
-        target: "http://localhost:3000",
+        target: "https://delivery-app.onrender.com",
         changeOrigin: true,
         secure: false,
         agent: new http.Agent(),
