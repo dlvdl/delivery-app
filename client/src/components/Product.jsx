@@ -62,17 +62,18 @@ const Wrapper = styled.section`
     display: flex;
     width: 100%;
     flex-direction: column;
-    justify-content: center;
+
     background-color: #18181a;
     border-radius: 10px;
     padding: 1rem;
+    align-items: center;
   }
 
   .delivery-app__product-container-inCart {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    background-color: #18181a;
+    /* background-color: #18181a; */
     /* border: 2px solid black; */
     border-radius: 10px;
     padding: 1rem;
@@ -97,7 +98,8 @@ const Wrapper = styled.section`
     border-radius: 10px;
     display: flex;
     flex: 1;
-    width: 300px;
+    width: 200px;
+
     max-height: 200px;
   }
 
@@ -108,7 +110,6 @@ const Wrapper = styled.section`
   }
 
   .delivery-app__product-button {
-    align-self: flex-end;
     cursor: pointer;
     padding: 0.5rem 0.8rem;
     border-radius: 10px;

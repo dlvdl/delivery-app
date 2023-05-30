@@ -7,7 +7,6 @@ const Shop = () => {
   const { fetchProducts, currentShop, products, products_loading } =
     useProductContext()
 
-  console.log(currentShop)
   return (
     <Wrapper>
       <Header />

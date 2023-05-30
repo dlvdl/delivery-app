@@ -9,9 +9,7 @@ const Goods = () => {
     useProductContext()
 
   useEffect(() => {
-    fetchProducts(
-      `https://my-delivery-app-api.onrender.com/api/v1/products/?company=${currentShop}`
-    )
+    fetchProducts(`/api/v1/products/?company=${currentShop}`)
   }, [currentShop])
 
   return (

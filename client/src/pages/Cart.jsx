@@ -188,7 +188,7 @@ const Wrapper = styled.section`
   .delivery-app__submit-button-container {
     display: flex;
     justify-content: flex-end;
-    margin: 3rem 10rem;
+    margin: 3rem;
     align-items: center;
     gap: 2rem;
   }
