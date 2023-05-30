@@ -2,9 +2,22 @@ import { React, useState } from "react"
 import styled from "styled-components"
 import { Header, Product } from "../components/index"
 import { useProductContext } from "../context/product_context"
+import axios from "axios"
 
-const submitHandler = (e) => {
-  e.preventDefault()
+const submitHandler = (formData, order, sum) => {
+  return async (e) => {
+    e.preventDefault()
+    try {
+      const response = await axios.post("/api/v1/orders", {
+        ...formData,
+        order,
+        totalPrice: sum,
+      })
+      console.log("Handle the successfull response")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 
 const onChangeHandler = (prevVal, action) => {
@@ -27,7 +40,10 @@ const Cart = () => {
       <Header />
       <div className="delivery-app__cart-container">
         <div className="delivery-app__cart-form">
-          <form name="form" onSubmit={submitHandler}>
+          <form
+            name="form"
+            onSubmit={submitHandler(inputsValue, cart, orderSum)}
+          >
             <div>
               <input
                 type="text"
@@ -68,6 +84,7 @@ const Cart = () => {
               />
               <label htmlFor="address">Adress</label>
             </div>
+            <button type="submit">Submit</button>
           </form>
         </div>
 
@@ -94,7 +111,6 @@ const Cart = () => {
         <p>
           Total price: <span>{orderSum}</span>
         </p>
-        <button>Submit</button>
       </div>
     </Wrapper>
   )
