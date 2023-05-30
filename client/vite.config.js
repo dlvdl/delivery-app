@@ -10,7 +10,7 @@ export default defineConfig({
       "/api/v1": {
         target: "https://my-delivery-app-api.onrender.com",
         changeOrigin: true,
-        secure: false,
+        secure: true,
         agent: new https.Agent(),
       },
     },
