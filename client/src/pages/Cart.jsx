@@ -1,6 +1,6 @@
 import { React, useState } from "react"
 import styled from "styled-components"
-import { Header, Product } from "../components/index"
+import { Header, Product, Map } from "../components/index"
 import { useProductContext } from "../context/product_context"
 import axios from "axios"
 
@@ -44,6 +44,7 @@ const Cart = () => {
             name="form"
             onSubmit={submitHandler(inputsValue, cart, orderSum)}
           >
+            <Map></Map>
             <div>
               <input
                 type="text"
