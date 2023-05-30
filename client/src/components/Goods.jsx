@@ -9,7 +9,7 @@ const Goods = () => {
     useProductContext()
 
   useEffect(() => {
-    fetchProducts(`/products/?company=${currentShop}`)
+    fetchProducts(`/api/v1/products/?company=${currentShop}`)
   }, [currentShop])
 
   return (
