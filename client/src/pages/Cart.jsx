@@ -44,7 +44,6 @@ const Cart = () => {
             name="form"
             onSubmit={submitHandler(inputsValue, cart, orderSum)}
           >
-            <Map></Map>
             <div>
               <input
                 type="text"
@@ -148,6 +147,16 @@ const Wrapper = styled.section`
     flex: 1;
   }
 
+  .delivery-app__cart-form > form > button {
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    max-width: 300px;
+  }
+
   .delivery-app__cart-content {
     overflow: scroll;
     overflow-x: hidden;
@@ -179,7 +188,7 @@ const Wrapper = styled.section`
   .delivery-app__submit-button-container {
     display: flex;
     justify-content: flex-end;
-    margin: 3rem 0;
+    margin: 3rem 10rem;
     align-items: center;
     gap: 2rem;
   }
