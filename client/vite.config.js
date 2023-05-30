@@ -1,4 +1,4 @@
-import http from "http"
+import https from "https"
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 
@@ -11,7 +11,7 @@ export default defineConfig({
         target: "https://my-delivery-app-api.onrender.com",
         changeOrigin: true,
         secure: false,
-        agent: new http.Agent(),
+        agent: new https.Agent(),
       },
     },
   },
