@@ -73,8 +73,7 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    /* background-color: #18181a; */
-    /* border: 2px solid black; */
+
     border-radius: 10px;
     padding: 1rem;
     width: 100%;
@@ -105,8 +104,8 @@ const Wrapper = styled.section`
 
   .delivery-app__product-container,
   .delivery-app__product-container-inCart {
-    max-width: 300px;
-    max-height: 300px;
+    /* max-width: 300px;
+    max-height: 300px; */
   }
 
   .delivery-app__product-button {

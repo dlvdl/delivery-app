@@ -44,7 +44,9 @@ const Cart = () => {
             name="form"
             onSubmit={submitHandler(inputsValue, cart, orderSum)}
           >
+            <Map></Map>
             <div>
+              <label htmlFor="name">Name</label>
               <input
                 type="text"
                 name="name"
@@ -52,9 +54,9 @@ const Cart = () => {
                 value={inputsValue.name}
                 onChange={onChangeHandler(inputsValue, setInputsValue)}
               />
-              <label htmlFor="name">Name</label>
             </div>
             <div>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 name="email"
@@ -62,9 +64,9 @@ const Cart = () => {
                 onChange={onChangeHandler(inputsValue, setInputsValue)}
                 value={inputsValue.email}
               />
-              <label htmlFor="email">Email</label>
             </div>
             <div>
+              <label htmlFor="phone">Phone</label>
               <input
                 type="phone"
                 name="phone"
@@ -72,9 +74,9 @@ const Cart = () => {
                 value={inputsValue.phone}
                 onChange={onChangeHandler(inputsValue, setInputsValue)}
               />
-              <label htmlFor="phone">Phone</label>
             </div>
             <div>
+              <label htmlFor="address">Adress</label>
               <input
                 type="text"
                 name="address"
@@ -82,7 +84,6 @@ const Cart = () => {
                 value={inputsValue.address}
                 onChange={onChangeHandler(inputsValue, setInputsValue)}
               />
-              <label htmlFor="address">Adress</label>
             </div>
             <button type="submit">Submit</button>
           </form>
@@ -141,6 +142,7 @@ const Wrapper = styled.section`
     justify-content: flex-start;
     gap: 1rem;
     align-items: center;
+    flex-direction: column;
   }
 
   .delivery-app__cart-form > form > div > * {
@@ -155,6 +157,7 @@ const Wrapper = styled.section`
     outline: none;
     border: none;
     max-width: 300px;
+    align-self: center;
   }
 
   .delivery-app__cart-content {
@@ -165,7 +168,7 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-height: 500px;
+
     padding: 0 5rem;
   }
 
@@ -183,6 +186,7 @@ const Wrapper = styled.section`
     padding: 12px;
     border-radius: 10px;
     appearance: none;
+    width: 100%;
   }
 
   .delivery-app__submit-button-container {
