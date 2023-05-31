@@ -39,6 +39,7 @@ const Wrapper = styled.section`
   }
 
   .delivery-app__header-navbar-link {
+    align-items: center;
     display: flex;
   }
 
