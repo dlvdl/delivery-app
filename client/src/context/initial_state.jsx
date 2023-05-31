@@ -5,4 +5,5 @@ export const initialState = {
   currentShop: "McDonald's",
   cart: [],
   orderSum: 0,
+  address: null,
 }

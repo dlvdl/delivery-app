@@ -11,6 +11,7 @@ import {
   SET_IN_CART,
   CALCULATE_ORDER_SUM,
   REMOVE_FROM_CART,
+  SET_ADDRESS,
 } from "../actions"
 
 import reducer from "../reducers/product_reducer"
@@ -66,6 +67,10 @@ export const ProductProvider = ({ children }) => {
     calculateOrderSum()
   }
 
+  const setAddress = (address) => {
+    dispatch({ type: SET_ADDRESS, payload: address })
+  }
+
   return (
     <ProductsContext.Provider
       value={{
@@ -77,6 +82,7 @@ export const ProductProvider = ({ children }) => {
         setInCart,
         calculateOrderSum,
         removeFromCart,
+        setAddress,
       }}
     >
       {children}

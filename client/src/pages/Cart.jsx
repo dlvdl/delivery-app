@@ -4,7 +4,8 @@ import { Header, Product, Map } from "../components/index"
 import { useProductContext } from "../context/product_context"
 import axios from "axios"
 
-const submitHandler = (formData, order, sum) => {
+const submitHandler = (formData, order, sum, address) => {
+  const { clearCart } = useProductContext()
   return async (e) => {
     e.preventDefault()
     try {
@@ -12,7 +13,9 @@ const submitHandler = (formData, order, sum) => {
         ...formData,
         order,
         totalPrice: sum,
+        address: address,
       })
+      clearCart()
       console.log("Handle the successfull response")
     } catch (error) {
       console.log(error)
@@ -31,9 +34,8 @@ const Cart = () => {
     name: "",
     phone: "",
     email: "",
-    address: "",
   })
-  const { cart, orderSum } = useProductContext()
+  const { cart, orderSum, address } = useProductContext()
 
   return (
     <Wrapper>
@@ -42,7 +44,7 @@ const Cart = () => {
         <div className="delivery-app__cart-form">
           <form
             name="form"
-            onSubmit={submitHandler(inputsValue, cart, orderSum)}
+            onSubmit={submitHandler(inputsValue, cart, orderSum, address)}
           >
             <Map></Map>
             <div>
@@ -75,16 +77,7 @@ const Cart = () => {
                 onChange={onChangeHandler(inputsValue, setInputsValue)}
               />
             </div>
-            <div>
-              <label htmlFor="address">Adress</label>
-              <input
-                type="text"
-                name="address"
-                id="address"
-                value={inputsValue.address}
-                onChange={onChangeHandler(inputsValue, setInputsValue)}
-              />
-            </div>
+
             <button type="submit">Submit</button>
           </form>
         </div>

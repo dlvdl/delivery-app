@@ -18,7 +18,6 @@ const OrderSchema = new mongoose.Schema({
   address: {
     type: String,
     required: [true, "Please provide the adress"],
-    maxLength: [50, "Adress cannot be longer than 50 characters"],
   },
   totalPrice: {
     type: Number,

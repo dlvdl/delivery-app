@@ -99,13 +99,11 @@ const Wrapper = styled.section`
     flex: 1;
     width: 200px;
 
-    max-height: 200px;
+    //max-height: 200px;
   }
 
-  .delivery-app__product-container,
-  .delivery-app__product-container-inCart {
-    /* max-width: 300px;
-    max-height: 300px; */
+  .delivery-app__product-container-inCart img {
+    width: 20px;
   }
 
   .delivery-app__product-button {

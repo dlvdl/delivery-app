@@ -8,6 +8,7 @@ import {
   REMOVE_FROM_CART,
   SET_IN_CART,
   CALCULATE_ORDER_SUM,
+  SET_ADDRESS,
 } from "../actions"
 
 const products_reducer = (state, action) => {
@@ -81,6 +82,9 @@ const products_reducer = (state, action) => {
       )
 
       return { ...state, cart: newCart }
+
+    case SET_ADDRESS:
+      return { ...state, address: action.payload }
 
     default:
       throw new Error(`No Matching "${action.type}" - action type`)
