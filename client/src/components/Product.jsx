@@ -116,6 +116,16 @@ const Wrapper = styled.section`
     border: none;
   }
 
+  .delivery-app__product-button:hover {
+    transform: scale(1.05);
+    opacity: 0.7;
+  }
+
+  .delivery-app__product-button:active {
+    background-color: white;
+    transform: scale(1.1);
+  }
+
   .delivery-app__product-container-inCart-content > input {
     font-size: 14px;
     border: none;

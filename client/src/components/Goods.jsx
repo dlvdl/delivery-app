@@ -15,7 +15,9 @@ const Goods = () => {
   return (
     <Wrapper>
       <div className="delivery-app__gods-container">
-        {products !== undefined ? (
+        {products_loading ? (
+          <h1>Loading...</h1>
+        ) : products !== undefined ? (
           products.map((product) => {
             return (
               <Product
