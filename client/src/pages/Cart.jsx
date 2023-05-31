@@ -4,7 +4,7 @@ import { Header, Product, Map } from "../components/index"
 import { useProductContext } from "../context/product_context"
 import axios from "axios"
 
-const submitHandler = (formData, order, sum, address) => {
+const submitHandler = (formData, order, sum, address, setInputsValue) => {
   const { clearCart } = useProductContext()
   return async (e) => {
     e.preventDefault()
@@ -16,6 +16,11 @@ const submitHandler = (formData, order, sum, address) => {
         address: address,
       })
       clearCart()
+      setInputsValue({
+        name: "",
+        phone: "",
+        email: "",
+      })
       console.log("Handle the successfull response")
     } catch (error) {
       console.log(error)
@@ -44,7 +49,13 @@ const Cart = () => {
         <div className="delivery-app__cart-form">
           <form
             name="form"
-            onSubmit={submitHandler(inputsValue, cart, orderSum, address)}
+            onSubmit={submitHandler(
+              inputsValue,
+              cart,
+              orderSum,
+              address,
+              setInputsValue
+            )}
           >
             <Map></Map>
             <div>
@@ -185,7 +196,7 @@ const Wrapper = styled.section`
   .delivery-app__submit-button-container {
     display: flex;
     justify-content: flex-end;
-    margin: 3rem;
+    margin: 3rem 5rem;
     align-items: center;
     gap: 2rem;
   }
